@@ -2,7 +2,12 @@
     function SongPlayer($rootScope, Fixtures) {
         var SongPlayer = {};
         
+        /**
+        * @desc Retrives album info
+        * @type {Object}
+        */
         var currentAlbum = Fixtures.getAlbum();
+        
         
         var stopSong = function(song) {
             currentBuzzObject.stop();
@@ -50,6 +55,11 @@
             SongPlayer.currentSong = song;
         };
         
+        
+        /**
+        *@function getSongIndex
+        *@desc Private function that returns the index of songs in the currently presented album
+        */
         var getSongIndex = function(song) {
             return currentAlbum.songs.indexOf(song);
         };
@@ -79,7 +89,7 @@
                 
             } else if (SongPlayer.currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
             
                 }
             }               
@@ -96,6 +106,11 @@
             song.playing = false;
         };
         
+        /**
+        * @function SongPlayer.previous
+        * @desc Decreases song number when clicked
+        * @param {Object} empty
+        */ 
         SongPlayer.previous = function() {
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
@@ -109,6 +124,11 @@
             }
         };
         
+        /**
+        * @function SongPlayer.next
+        * @desc Increases song number when clicked
+        * @param {Object} empty
+        */ 
         SongPlayer.next = function() {
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
