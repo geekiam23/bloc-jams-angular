@@ -165,9 +165,9 @@
         * @param {Number} volume
         */
          
-        SongPlayer.volume = function (volume) {
-            if (currentSoundFile) {
-                currentSoundFile.setVolume(volume);
+        SongPlayer.setVolume = function (volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
             }
              
             SongPlayer.volume = volume;
